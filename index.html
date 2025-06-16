@@ -1,152 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blake Varnadoe — Author</title>
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #000000;
-      --accent: #0077ff;
-      --card-bg: #f0f0f0;
-      --transition: 0.4s ease;
-    }
-    .dark {
-      --bg: #121212;
-      --text: #fff;
-      --accent: #00ccff;
-      --card-bg: #1e1e1e;
-    }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, sans-serif;
-      transition: background-color var(--transition), color var(--transition);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-    }
-    nav {
-      width: 100%;
-      max-width: 900px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--accent);
-      font-weight: bold;
-      margin-right: 1rem;
-      font-size: 1.1rem;
-    }
-    nav a:last-child {
-      margin-right: 0;
-    }
-    .toggle-btn {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      cursor: pointer;
-      font-size: 1.2rem;
-      user-select: none;
-    }
-    h1 {
-      margin-bottom: 1rem;
-    }
-    .slideshow-container {
-      max-width: 400px;
-      width: 100%;
-      height: 400px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      margin-bottom: 2rem;
-      background: var(--card-bg);
-      position: relative;
-    }
-    .slide {
-      display: none;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .slide.active {
-      display: block;
-      animation: fadeIn 1s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    .fb-widget {
-      max-width: 500px;
-      width: 100%;
-      margin-bottom: 3rem;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Official website of Blake Varnadoe, the most unique prodigy author in horror and thrillers." />
+  <title>Blake Varnadoe - Author</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <script defer src="script.js"></script>
 </head>
-<body>
-  <nav>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="books.html">Books</a>
-      <a href="contact.html">Contact</a>
+<body class="light-mode">
+  <header>
+    <nav>
+      <div class="logo">Blake Varnadoe</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#facebook">Facebook</a></li>
+      </ul>
+      <button id="mode-toggle">🌓</button>
+    </nav>
+  </header>  <section class="hero">
+    <div class="slideshow">
+      <img src="img/blake1.jpg" alt="Blake 1" class="slide active" />
+      <img src="img/blake2.jpg" alt="Blake 2" class="slide" />
+      <img src="img/blake3.jpg" alt="Blake 3" class="slide" />
     </div>
-    <button class="toggle-btn" onclick="toggleMode()">🌓</button>
-  </nav>
-
-  <h1>Blake Varnadoe</h1>
-
-  <div class="slideshow-container">
-    <img class="slide active" src="https://scontent.fatl1-1.fna.fbcdn.net/v/t1.6435-9/157213318_10157570317246861_4492113172619745970_n.jpg" alt="Blake Varnadoe 1" />
-    <img class="slide" src="https://scontent.fatl1-1.fna.fbcdn.net/v/t1.6435-9/147999123_10157517853306861_3170270276698669682_n.jpg" alt="Blake Varnadoe 2" />
-    <img class="slide" src="https://scontent.fatl1-1.fna.fbcdn.net/v/t1.6435-9/118803670_10157306237191861_1234567890_n.jpg" alt="Blake Varnadoe 3" />
-    <img class="slide" src="https://scontent.fatl1-1.fna.fbcdn.net/v/t1.6435-9/130123456_10157450372626861_0987654321_n.jpg" alt="Blake Varnadoe 4" />
-  </div>
-
-  <div class="fb-widget">
-    <iframe 
-      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61575202168903&tabs=timeline&width=500&height=350&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" 
-      width="500" 
-      height="350" 
-      style="border:none;overflow:hidden" 
-      scrolling="no" 
-      frameborder="0" 
-      allowfullscreen="true" 
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
-  </div>
-
-  <script>
-    function toggleMode() {
-      document.body.classList.toggle('dark');
-    }
-
-    // Slideshow script
-    const slides = document.querySelectorAll('.slide');
-    let current = 0;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
-
-    function nextSlide() {
-      current = (current + 1) % slides.length;
-      showSlide(current);
-    }
-
-    setInterval(nextSlide, 4000); // change every 4 seconds
-  </script>
+    <h1>12-Year-Old Prodigy Author</h1>
+    <p>Writing what most adults fear to imagine.</p>
+  </section>  <section id="about" class="section">
+    <h2>About Blake</h2>
+    <p>
+      [Insert full, detailed biography here. Mention birth, challenges, unique background, mental health, first writings, how you became published, in-person events, interviews, education, mentors, influences, favorite books, future goals. Google wants substance here.]
+    </p>
+  </section>  <section id="books" class="section">
+    <h2>Books</h2>
+    <div class="book-grid">
+      <div class="book">
+        <img src="img/book1.jpg" alt="Book 1" />
+        <h3>Book Title 1</h3>
+        <p>[Short book description here]</p>
+      </div>
+      <div class="book">
+        <img src="img/book2.jpg" alt="Book 2" />
+        <h3>Book Title 2</h3>
+        <p>[Short book description here]</p>
+      </div>
+    </div>
+  </section>  <section id="contact" class="section">
+    <h2>Contact Blake</h2>
+    <p>Phone: <a href="tel:7063505268">706-350-5268</a><br />
+       Email: <a href="mailto:blakevarnadoebooks@gmail.com">blakevarnadoebooks@gmail.com</a></p>
+  </section>  <section id="facebook" class="section">
+    <h2>Facebook</h2>
+    <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=61575202168903" data-tabs="timeline" data-width="500" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+      <blockquote cite="https://www.facebook.com/profile.php?id=61575202168903" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/profile.php?id=61575202168903">Blake Varnadoe</a></blockquote>
+    </div>
+  </section>  <footer>
+    <p>&copy; 2025 Blake Varnadoe. All rights reserved.</p>
+  </footer>
 </body>
 </html>
