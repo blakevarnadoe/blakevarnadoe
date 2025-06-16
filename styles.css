@@ -1,0 +1,88 @@
+/* General Reset & Fonts */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #ffffff;
+  color: #111;
+  line-height: 1.6;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header/Nav */
+header {
+  background-color: #111;
+  padding: 1em 0;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo a {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5em;
+}
+nav a {
+  color: #bbb;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover,
+nav a.active {
+  color: #fff;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to bottom right, #111, #333);
+  color: #fff;
+  padding: 4em 0;
+  text-align: center;
+}
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5em;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5em;
+}
+.btn {
+  display: inline-block;
+  background-color: #ff4444;
+  color: #fff;
+  padding: 0.8em 1.5em;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.btn:hover {
+  background-color: #e60000;
+}
+
+/* Footer */
+footer {
+  background-color: #111;
+  color: #ccc;
+  text-align: center;
+  padding: 2em 0;
+  margin-top: 2em;
+  font-size: 0.9rem;
+}
