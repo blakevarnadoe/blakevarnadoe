@@ -2,108 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Books by Blake Varnadoe</title>
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #000000;
-      --card: #f0f0f0;
-      --accent: #0077ff;
-      --transition: 0.4s ease;
-    }
-    .dark {
-      --bg: #121212;
-      --text: #ffffff;
-      --card: #1e1e1e;
-      --accent: #00ccff;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 2rem;
-      transition: background-color var(--transition), color var(--transition);
-    }
-    nav a {
-      margin-right: 1rem;
-      text-decoration: none;
-      color: var(--accent);
-      font-weight: bold;
-    }
-    .toggle-btn {
-      float: right;
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      cursor: pointer;
-    }
-    h1, h2 {
-      margin-top: 1rem;
-    }
-    .book-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    .book {
-      background: var(--card);
-      padding: 1rem;
-      border-radius: 1rem;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .book img {
-      max-width: 100%;
-      border-radius: 0.5rem;
-    }
-    .book-title {
-      margin: 0.5rem 0 0;
-      font-weight: bold;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Books – Blake Varnadoe</title>
+  <meta name="description" content="Books by Blake Varnadoe – Explore published and upcoming thrillers.">
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="books.html">Books</a>
-    <a href="contact.html">Contact</a>
-    <button class="toggle-btn" onclick="toggleMode()">🌓</button>
-  </nav>
+  <header>
+    <div class="container nav-container">
+      <h1 class="logo"><a href="index.html">Blake Varnadoe</a></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="books.html" class="active">Books</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <main>
-    <h1>Books by Blake Varnadoe</h1>
+    <section class="page-content">
+      <div class="container">
+        <h2>Books by Blake Varnadoe</h2>
 
-    <h2>📘 Current Releases</h2>
-    <div class="book-grid">
-      <div class="book">
-        <img src="https://via.placeholder.com/200x300?text=Book+1" alt="Book 1">
-        <p class="book-title">Crimson Roulette</p>
-        <p>A deadly game. A father’s love. One way out.</p>
-      </div>
-      <!-- Add more current books here -->
-    </div>
+        <div class="book-list">
 
-    <h2>📕 Coming Soon</h2>
-    <div class="book-grid">
-      <div class="book">
-        <img src="https://via.placeholder.com/200x300?text=Coming+Soon" alt="Upcoming Book">
-        <p class="book-title">Snowfall</p>
-        <p>They woke up cold, alone, and hunted. Memory is a lie.</p>
+          <!-- Book 1 -->
+          <div class="book">
+            <img src="images/nightmare-on-the-run.jpg" alt="Nightmare on the Run Cover" />
+            <div class="book-info">
+              <h3>Nightmare on the Run</h3>
+              <p>A relentless psychological thriller that dives deep into fear, family, and survival. Published 2024.</p>
+            </div>
+          </div>
+
+          <!-- Book 2 -->
+          <div class="book">
+            <img src="images/crimson-roulette.jpg" alt="Crimson Roulette Cover" />
+            <div class="book-info">
+              <h3>Crimson Roulette (Coming Soon)</h3>
+              <p>In a game where lives are gambled instead of money, one father's past returns to haunt his future. Coming late 2025.</p>
+            </div>
+          </div>
+
+          <!-- Add more books as needed -->
+        </div>
       </div>
-      <!-- Add more upcoming books here -->
-    </div>
+    </section>
   </main>
 
-  <script>
-    function toggleMode() {
-      document.body.classList.toggle('dark');
-    }
-  </script>
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Blake Varnadoe. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
