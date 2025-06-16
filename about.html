@@ -2,80 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Blake Varnadoe</title>
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #000000;
-      --card: #f0f0f0;
-      --accent: #0077ff;
-      --transition: 0.4s ease;
-    }
-    .dark {
-      --bg: #121212;
-      --text: #ffffff;
-      --card: #1e1e1e;
-      --accent: #00ccff;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 2rem;
-      transition: background-color var(--transition), color var(--transition);
-    }
-    nav a {
-      margin-right: 1rem;
-      text-decoration: none;
-      color: var(--accent);
-      font-weight: bold;
-    }
-    .toggle-btn {
-      float: right;
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      cursor: pointer;
-    }
-    .bio {
-      margin-top: 2rem;
-      line-height: 1.6;
-    }
-    footer {
-      margin-top: 2rem;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About – Blake Varnadoe</title>
+  <meta name="description" content="About Blake Varnadoe – Author of thrillers and psychological horror.">
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="books.html">Books</a>
-    <a href="contact.html">Contact</a>
-    <button class="toggle-btn" onclick="toggleMode()">🌓</button>
-  </nav>
+  <header>
+    <div class="container nav-container">
+      <h1 class="logo"><a href="index.html">Blake Varnadoe</a></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <main class="bio">
-    <h1>About Blake Varnadoe</h1>
-    <p>Blake Varnadoe is an author of psychological thrillers, twist-laced social commentaries, and emotionally charged narratives that hit like a freight train. Raised in Georgia, Blake discovered his love for storytelling early, drawn to the darker edges of fiction where danger and emotion intertwine. His work explores the complexity of family, trauma, survival, and redemption—always with unexpected turns that leave readers breathless.</p>
-
-    <p>When he’s not writing, Blake is actively connecting with readers, studying the craft of storytelling, and brainstorming fresh ways to shake up the genre. Whether he's writing about a deadly game of chance or a haunting mystery buried in snow, Blake’s stories stay with you.</p>
-
-    <p>Follow him on Facebook or reach out directly to connect.</p>
-
-    <footer>
-      <a href="https://www.facebook.com/profile.php?id=61575202168903" target="_blank">Facebook</a>
-    </footer>
+  <main>
+    <section class="page-content">
+      <div class="container">
+        <h2>About Blake Varnadoe</h2>
+        <p>[You’ll paste your full biography here — childhood, mental health, what makes you a prodigy, etc.]</p>
+        <p>You can also include images or videos later, and I’ll help style them.</p>
+      </div>
+    </section>
   </main>
 
-  <script>
-    function toggleMode() {
-      document.body.classList.toggle('dark');
-    }
-  </script>
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Blake Varnadoe. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
