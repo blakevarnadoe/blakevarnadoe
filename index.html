@@ -1,63 +1,206 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Official website of Blake Varnadoe, the most unique prodigy author in horror and thrillers." />
-  <title>Blake Varnadoe - Author</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <script defer src="script.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blake Varnadoe</title>
+  <meta name="description" content="Official site of Blake Varnadoe - prodigy author of horror and thrillers.">
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      background: var(--bg);
+      color: var(--text);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar nav a {
+      margin: 0 1em;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+
+    #mode-toggle {
+      background: none;
+      border: none;
+      font-size: 1.3em;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2em 1em;
+    }
+
+    .slideshow {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    section {
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .book-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1em;
+    }
+
+    .book img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* Dark/light mode variables */
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #ffffff;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    a {
+      color: var(--text);
+    }
+  </style>
 </head>
-<body class="light-mode">
-  <header>
+<body>
+  <header class="navbar">
+    <div class="logo">Blake Varnadoe</div>
     <nav>
-      <div class="logo">Blake Varnadoe</div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#books">Books</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#facebook">Facebook</a></li>
-      </ul>
+      <a href="#about">About</a>
+      <a href="#books">Books</a>
+      <a href="#contact">Contact</a>
+      <a href="#facebook">Facebook</a>
       <button id="mode-toggle">🌓</button>
     </nav>
-  </header>  <section class="hero">
+  </header>
+
+  <section class="hero">
     <div class="slideshow">
-      <img src="img/blake1.jpg" alt="Blake 1" class="slide active" />
-      <img src="img/blake2.jpg" alt="Blake 2" class="slide" />
-      <img src="img/blake3.jpg" alt="Blake 3" class="slide" />
+      <img src="img/blake1.jpg" alt="Blake photo 1" class="slide active">
+      <img src="img/blake2.jpg" alt="Blake photo 2" class="slide">
+      <img src="img/blake3.jpg" alt="Blake photo 3" class="slide">
     </div>
-    <h1>12-Year-Old Prodigy Author</h1>
-    <p>Writing what most adults fear to imagine.</p>
-  </section>  <section id="about" class="section">
-    <h2>About Blake</h2>
-    <p>
-      [Insert full, detailed biography here. Mention birth, challenges, unique background, mental health, first writings, how you became published, in-person events, interviews, education, mentors, influences, favorite books, future goals. Google wants substance here.]
-    </p>
-  </section>  <section id="books" class="section">
+    <h1>Blake Varnadoe</h1>
+    <p>Author. Visionary. Prodigy of Darkness.</p>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>[Insert your full, raw, detailed bio here — birth, mental health, autism, stories, journey, mission. This helps with SEO and builds your legend.]</p>
+  </section>
+
+  <section id="books">
     <h2>Books</h2>
-    <div class="book-grid">
+    <div class="book-list">
       <div class="book">
-        <img src="img/book1.jpg" alt="Book 1" />
+        <img src="img/book1.jpg" alt="Book cover">
         <h3>Book Title 1</h3>
-        <p>[Short book description here]</p>
+        <p>[Short description]</p>
       </div>
       <div class="book">
-        <img src="img/book2.jpg" alt="Book 2" />
+        <img src="img/book2.jpg" alt="Book cover">
         <h3>Book Title 2</h3>
-        <p>[Short book description here]</p>
+        <p>[Short description]</p>
       </div>
     </div>
-  </section>  <section id="contact" class="section">
-    <h2>Contact Blake</h2>
-    <p>Phone: <a href="tel:7063505268">706-350-5268</a><br />
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Phone: <a href="tel:7063505268">706-350-5268</a><br>
        Email: <a href="mailto:blakevarnadoebooks@gmail.com">blakevarnadoebooks@gmail.com</a></p>
-  </section>  <section id="facebook" class="section">
+  </section>
+
+  <section id="facebook">
     <h2>Facebook</h2>
-    <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=61575202168903" data-tabs="timeline" data-width="500" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-      <blockquote cite="https://www.facebook.com/profile.php?id=61575202168903" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/profile.php?id=61575202168903">Blake Varnadoe</a></blockquote>
+    <div class="fb-page"
+         data-href="https://www.facebook.com/profile.php?id=61575202168903"
+         data-tabs="timeline"
+         data-width="500"
+         data-height="600"
+         data-small-header="false"
+         data-hide-cover="false"
+         data-show-facepile="true">
     </div>
-  </section>  <footer>
-    <p>&copy; 2025 Blake Varnadoe. All rights reserved.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Blake Varnadoe</p>
   </footer>
+
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0" nonce="fb-widget"></script>
+
+  <!-- JavaScript for slideshow and mode toggle -->
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function showNextSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    setInterval(showNextSlide, 3000); // Change every 3 seconds
+
+    const toggle = document.getElementById('mode-toggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+  </script>
 </body>
 </html>
