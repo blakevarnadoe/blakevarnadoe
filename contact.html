@@ -2,84 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Blake Varnadoe</title>
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #000000;
-      --card: #f0f0f0;
-      --accent: #0077ff;
-      --transition: 0.4s ease;
-    }
-    .dark {
-      --bg: #121212;
-      --text: #ffffff;
-      --card: #1e1e1e;
-      --accent: #00ccff;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 2rem;
-      transition: background-color var(--transition), color var(--transition);
-    }
-    nav a {
-      margin-right: 1rem;
-      text-decoration: none;
-      color: var(--accent);
-      font-weight: bold;
-    }
-    .toggle-btn {
-      float: right;
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      cursor: pointer;
-    }
-    h1 {
-      margin-top: 1rem;
-    }
-    .contact-info {
-      margin: 2rem 0;
-    }
-    iframe {
-      border: none;
-      width: 100%;
-      max-width: 500px;
-      height: 350px;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact – Blake Varnadoe</title>
+  <meta name="description" content="Contact Blake Varnadoe – author and speaker.">
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="books.html">Books</a>
-    <a href="contact.html">Contact</a>
-    <button class="toggle-btn" onclick="toggleMode()">🌓</button>
-  </nav>
+  <header>
+    <div class="container nav-container">
+      <h1 class="logo"><a href="index.html">Blake Varnadoe</a></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <main>
-    <h1>Contact Blake</h1>
-    <div class="contact-info">
-      <p>📞 Phone: <a href="tel:7063505268">706-350-5268</a></p>
-      <p>📧 Email: <a href="mailto:blakevarnadoebooks@gmail.com">blakevarnadoebooks@gmail.com</a></p>
-      <p>🔗 Facebook: <a href="https://www.facebook.com/profile.php?id=61575202168903" target="_blank">Visit My Page</a></p>
-    </div>
+    <section class="page-content">
+      <div class="container">
+        <h2>Contact Blake Varnadoe</h2>
 
-    <h2>Facebook Feed</h2>
-    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61575202168903&tabs=timeline&width=500&height=350&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        <p>Phone: <a href="tel:+17063505268">706-350-5268</a></p>
+        <p>Email: <a href="mailto:blakevarnadoebooks@gmail.com">blakevarnadoebooks@gmail.com</a></p>
+        <p>Facebook: <a href="https://www.facebook.com/profile.php?id=61575202168903" target="_blank" rel="noopener">Blake Varnadoe Facebook Page</a></p>
+
+        <h3>Facebook Page Widget</h3>
+        <div id="fb-root"></div>
+        <div class="fb-page"
+          data-href="https://www.facebook.com/profile.php?id=61575202168903"
+          data-tabs="timeline"
+          data-width="500"
+          data-height="600"
+          data-small-header="false"
+          data-adapt-container-width="true"
+          data-hide-cover="false"
+          data-show-facepile="true">
+        </div>
+      </div>
+    </section>
   </main>
 
-  <script>
-    function toggleMode() {
-      document.body.classList.toggle('dark');
-    }
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Blake Varnadoe. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0">
   </script>
 </body>
 </html>
