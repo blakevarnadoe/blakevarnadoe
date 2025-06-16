@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blake Varnadoe | Author</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --card: #f0f0f0;
+      --accent: #0077ff;
+      --transition: 0.4s ease;
+    }
+    .dark {
+      --bg: #121212;
+      --text: #ffffff;
+      --card: #1e1e1e;
+      --accent: #00ccff;
+    }
+    * {
+      box-sizing: border-box;
+      transition: background-color var(--transition), color var(--transition);
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 2rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      margin-right: 1rem;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    .toggle-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      cursor: pointer;
+    }
+    main {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Blake Varnadoe</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="books.html">Books</a>
+      <a href="contact.html">Contact</a>
+      <button class="toggle-btn" onclick="toggleMode()">🌓</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Welcome to Blake's Official Author Site</h2>
+    <p>Dark thrillers. Sharp twists. Bold storytelling.</p>
+    <p>Explore my books, learn more about me, and connect.</p>
+  </main>
+
+  <script>
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) document.body.classList.add('dark');
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+</body>
+</html>
