@@ -6,7 +6,102 @@
   <title>Contact – Blake Varnadoe</title>
   <meta name="description" content="Contact Blake Varnadoe – author and speaker.">
   <link rel="icon" href="favicon.ico" />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #0b0c10;
+      color: #ffffff;
+      line-height: 1.7;
+    }
+    a {
+      text-decoration: none;
+      color: #1e90ff;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    header {
+      background-color: #111;
+      padding: 1em 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo a {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5em;
+    }
+    nav a {
+      color: #bbb;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #fff;
+    }
+
+    .page-content {
+      padding: 4em 1em 6em;
+    }
+    .page-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5em;
+      text-align: center;
+      color: #e50914;
+    }
+
+    .page-content p {
+      margin-bottom: 1.2em;
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-top: 2em;
+      margin-bottom: 1em;
+      color: #fff;
+    }
+
+    footer {
+      background-color: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 2em 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .page-content h2 {
+        font-size: 2rem;
+      }
+      .fb-page {
+        width: 100% !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -28,9 +123,9 @@
       <div class="container">
         <h2>Contact Blake Varnadoe</h2>
 
-        <p>Phone: <a href="tel:+17063505268">706-350-5268</a></p>
-        <p>Email: <a href="mailto:blakevarnadoebooks@gmail.com">blakevarnadoebooks@gmail.com</a></p>
-        <p>Facebook: <a href="https://www.facebook.com/profile.php?id=61575202168903" target="_blank" rel="noopener">Blake Varnadoe Facebook Page</a></p>
+        <p>📞 <strong>Phone:</strong> <a href="tel:+17063505268">706-350-5268</a></p>
+        <p>📧 <strong>Email:</strong> <a href="mailto:blakevarnadoebooks@gmail.com">blakevarnadoebooks@gmail.com</a></p>
+        <p>🔗 <strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61575202168903" target="_blank" rel="noopener">Blake Varnadoe Facebook Page</a></p>
 
         <h3>Facebook Page Widget</h3>
         <div id="fb-root"></div>
