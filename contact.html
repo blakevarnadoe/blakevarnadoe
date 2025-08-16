@@ -207,33 +207,6 @@
       transform: scale(1.02);
     }
     
-    .book-purchase {
-      text-align: center;
-      margin-top: 2em;
-    }
-    
-    .book-links {
-      display: flex;
-      justify-content: center;
-      gap: 1em;
-      flex-wrap: wrap;
-      margin-top: 1em;
-    }
-    
-    .book-link {
-      background-color: #e50914;
-      color: #fff;
-      padding: 0.8em 1.5em;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-    
-    .book-link:hover {
-      background-color: #b00610;
-      transform: scale(1.05);
-    }
-    
     footer {
       background-color: #111;
       color: #ccc;
@@ -259,11 +232,6 @@
       
       .social-links {
         justify-content: center;
-      }
-      
-      .book-links {
-        flex-direction: column;
-        align-items: center;
       }
     }
   </style>
@@ -335,7 +303,7 @@
         <!-- Contact Form -->
         <div class="contact-form">
           <h3>📧 Send a Message</h3>
-          <form action="#" method="POST">
+          <form id="contactForm">
             <div class="form-group">
               <label for="name">Name *</label>
               <input type="text" id="name" name="name" required>
@@ -348,11 +316,11 @@
               <label for="subject">Subject *</label>
               <select id="subject" name="subject" required>
                 <option value="">Choose a subject...</option>
-                <option value="media">Media Inquiry</option>
-                <option value="speaking">Speaking Engagement</option>
-                <option value="fan">Fan Mail</option>
-                <option value="business">Business Inquiry</option>
-                <option value="other">Other</option>
+                <option value="Media Inquiry">Media Inquiry</option>
+                <option value="Speaking Engagement">Speaking Engagement</option>
+                <option value="Fan Mail">Fan Mail</option>
+                <option value="Business Inquiry">Business Inquiry</option>
+                <option value="Other">Other</option>
               </select>
             </div>
             <div class="form-group">
@@ -361,17 +329,6 @@
             </div>
             <button type="submit" class="submit-btn">Send Message</button>
           </form>
-        </div>
-        
-        <!-- Book Purchase -->
-        <div class="book-purchase">
-          <h3>📚 Get Blake's Book</h3>
-          <p>Want to read "Eclipsar"? Get your copy now:</p>
-          <div class="book-links">
-            <a href="#" class="book-link" target="_blank" rel="noopener">Amazon</a>
-            <a href="#" class="book-link" target="_blank" rel="noopener">Barnes & Noble</a>
-            <a href="#" class="book-link" target="_blank" rel="noopener">Local Bookstore</a>
-          </div>
         </div>
         
       </div>
@@ -385,11 +342,25 @@
   </footer>
   
   <script>
-    // Form submission handler
-    document.querySelector('form').addEventListener('submit', function(e) {
+    // Form submission handler using mailto
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Thank you for your message! Blake will get back to you soon.');
-      this.reset();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      const emailSubject = encodeURIComponent(`${subject} - Contact from ${name}`);
+      const emailBody = encodeURIComponent(
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Subject: ${subject}\n\n` +
+        `Message:\n${message}`
+      );
+      
+      const mailtoLink = `mailto:blakevarnadoebooks@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+      window.location.href = mailtoLink;
     });
   </script>
 </body>
