@@ -90,12 +90,43 @@
       margin: 0 auto;
     }
 
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      margin: 2em 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background-color: #333;
+      color: #ccc;
+      border: none;
+      padding: 0.6em 1.2em;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background-color: #e50914;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
     .article-card {
       background-color: #111;
       border-radius: 8px;
       padding: 2em;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
       border-left: 4px solid #e50914;
+    }
+
+    .article-card.hidden {
+      display: none;
     }
 
     .article-card:hover {
@@ -212,9 +243,17 @@
       <h2 class="page-title">Articles</h2>
       <p class="intro">Major news outlets have covered Blake's remarkable journey as a young author publishing adult thrillers. Here are the key articles about his work and achievements.</p>
       
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="video">Video Interviews</button>
+        <button class="filter-btn" data-filter="print">Print</button>
+        <button class="filter-btn" data-filter="radio">Radio</button>
+        <button class="filter-btn" data-filter="self">Self-Published</button>
+      </div>
+      
       <div class="articles-grid">
         
-        <article class="article-card">
+        <article class="article-card" data-category="video print">
           <div class="article-header">
             <div class="article-source">FOX 5 Atlanta</div>
             <div class="article-date">June 23, 2025</div>
@@ -223,10 +262,10 @@
           <p class="article-excerpt">
             FOX 5 Atlanta featured Blake's incredible achievement of writing and self-publishing a full-length adult fiction novel at just 12 years old. The piece highlights how Blake isn't just writing children's stories, but creating sophisticated thrillers for mature audiences, showcasing his exceptional talent and dedication to the craft.
           </p>
-          <a href="https://www.fox5atlanta.com/news/12-year-old-lagrange-prodigy-writes-sci-fi-thriller-adult-audience" class="article-link" target="_blank" rel="noopener">Read Full Article</a>
+          <a href="https://www.fox5atlanta.com/news/12-year-old-lagrange-prodigy-writes-sci-fi-thriller-adult-audience" class="article-link" target="_blank" rel="noopener">Read Article & Watch Video</a>
         </article>
 
-        <article class="article-card">
+        <article class="article-card" data-category="print">
           <div class="article-header">
             <div class="article-source">LaGrange Daily News</div>
             <div class="article-date">April 11, 2025</div>
@@ -238,7 +277,7 @@
           <a href="https://www.lagrangenews.com/2025/04/11/12-year-old-lagrange-author-publishes-first-book/" class="article-link" target="_blank" rel="noopener">Read Full Article</a>
         </article>
 
-        <article class="article-card">
+        <article class="article-card" data-category="radio">
           <div class="article-header">
             <div class="article-source">WELR-FM Radio</div>
             <div class="article-date">June 11, 2025</div>
@@ -250,7 +289,7 @@
           <a href="https://www.facebook.com/share/v/1783S73g6s/" class="article-link" target="_blank" rel="noopener">Listen to Interview</a>
         </article>
 
-        <article class="article-card">
+        <article class="article-card" data-category="video">
           <div class="article-header">
             <div class="article-source">WTVM News</div>
             <div class="article-date">May 27, 2025</div>
@@ -262,7 +301,7 @@
           <a href="https://drive.google.com/file/d/15etd3FTLK16QatwsKY-gW0PVy5ED1Z0U/view?usp=drive_link" class="article-link" target="_blank" rel="noopener">Watch Interview</a>
         </article>
 
-        <article class="article-card">
+        <article class="article-card" data-category="video">
           <div class="article-header">
             <div class="article-source">WLTZ News</div>
             <div class="article-date">May 27, 2025</div>
@@ -274,7 +313,7 @@
           <a href="https://drive.google.com/file/d/1S4dAbovmHbMQU2yV_HFBr_LGgy7DDjzb/view?usp=drive_link" class="article-link" target="_blank" rel="noopener">Watch Interview</a>
         </article>
 
-        <article class="article-card">
+        <article class="article-card" data-category="video print">
           <div class="article-header">
             <div class="article-source">Times-Georgian</div>
             <div class="article-date">August 11, 2025</div>
@@ -283,10 +322,10 @@
           <p class="article-excerpt">
             The Times-Georgian featured Blake in their "Folks in the Making" series, exploring how his high-functioning autism helps fuel his creative writing process. The article discusses how Blake uses hyperfixation episodes to generate story ideas and his ambitious goal to start a nonprofit foundation helping neurodivergent people launch their businesses. It also previews his upcoming books "Nightmare on the Run" and "Crimson Roulette."
           </p>
-          <a href="https://www.times-georgian.com/news/local/folks-in-the-making-young-author-releases-first-book/article_561195e3-f41c-5e63-a59f-0365c8a6632c.html" class="article-link" target="_blank" rel="noopener">Read Full Article</a>
+          <a href="https://www.times-georgian.com/news/local/folks-in-the-making-young-author-releases-first-book/article_561195e3-f41c-5e63-a59f-0365c8a6632c.html" class="article-link" target="_blank" rel="noopener">Read Article & Watch Video</a>
         </article>
 
-        <article class="article-card">
+        <article class="article-card" data-category="print">
           <div class="article-header">
             <div class="article-source">WRBL News (Columbus)</div>
             <div class="article-date">June 27, 2025</div>
@@ -307,5 +346,32 @@
       <p>&copy; 2025 Blake Varnadoe. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const articles = document.querySelectorAll('.article-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filter = button.getAttribute('data-filter');
+        
+        articles.forEach(article => {
+          const categories = article.getAttribute('data-category').split(' ');
+          
+          if (filter === 'all' || categories.includes(filter)) {
+            article.classList.remove('hidden');
+          } else {
+            article.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
