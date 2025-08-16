@@ -3,76 +3,273 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Articles – Blake Varnadoe</title>
+  <title>Articles - Blake Varnadoe</title>
+  <meta name="description" content="News articles and media coverage about Blake Varnadoe and his published thriller Eclipsar.">
   <link rel="icon" href="favicon.ico" />
   <style>
-    body {
-      background-color: #0b0c10;
-      color: #fff;
-      font-family: "Segoe UI", sans-serif;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    header, footer {
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #0b0c10;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
       background-color: #111;
-      color: #ccc;
-      padding: 1.5em 0;
-      text-align: center;
+      padding: 1em 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo a {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
     }
     nav ul {
       list-style: none;
-      padding: 0;
       display: flex;
-      justify-content: center;
       gap: 1.5em;
     }
     nav a {
       color: #bbb;
-      text-decoration: none;
       font-weight: 500;
+      transition: color 0.3s ease;
     }
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       color: #fff;
     }
+
+    /* Main Content */
     main {
-      padding: 4em 2em;
+      padding: 4em 1em;
+      background-color: #0b0c10;
+    }
+    
+    .page-title {
       text-align: center;
-    }
-    h2 {
-      color: #e50914;
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 1em;
+      color: #fff;
     }
-    p {
-      color: #ccc;
+    
+    .intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3em;
       font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .articles-grid {
+      display: grid;
+      gap: 2em;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .article-card {
+      background-color: #111;
+      border-radius: 8px;
+      padding: 2em;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid #e50914;
+    }
+
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
+    }
+
+    .article-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1em;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+
+    .article-source {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #e50914;
+    }
+
+    .article-date {
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .article-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.8em;
+      color: #fff;
+    }
+
+    .article-excerpt {
+      color: #ccc;
+      margin-bottom: 1.5em;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .article-link {
+      display: inline-flex;
+      align-items: center;
+      background-color: #e50914;
+      color: #fff;
+      padding: 0.6em 1.2em;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .article-link:hover {
+      background-color: #b00610;
+      transform: scale(1.05);
+    }
+
+    .article-link::after {
+      content: " →";
+      margin-left: 0.5em;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 2em 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.2rem;
+      }
+      
+      .article-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 0.8em;
+      }
+      
+      .article-card {
+        padding: 1.5em;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Blake Varnadoe</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="books.html">Books</a></li>
-        <li><a href="newsletter.html">Newsletter</a></li>
-        <li><a href="articles.html" class="active">Articles</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="praise.html">Praise</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container nav-container">
+      <h1 class="logo"><a href="index.html">Blake Varnadoe</a></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="newsletter.html">Newsletter</a></li>
+          <li><a href="articles.html" class="active">Articles</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="praise.html">Praise</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <h2>Articles</h2>
-    <p>This page is still being developed. Check back soon!</p>
+    <div class="container">
+      <h2 class="page-title">Articles</h2>
+      <p class="intro">Major news outlets have covered Blake's remarkable journey as a young author publishing adult thrillers. Here are the key articles about his work and achievements.</p>
+      
+      <div class="articles-grid">
+        
+        <article class="article-card">
+          <div class="article-header">
+            <div class="article-source">FOX 5 Atlanta</div>
+            <div class="article-date">June 23, 2025</div>
+          </div>
+          <h3 class="article-title">12-year-old LaGrange prodigy writes sci-fi thriller for adult audience</h3>
+          <p class="article-excerpt">
+            FOX 5 Atlanta featured Blake's incredible achievement of writing and self-publishing a full-length adult fiction novel at just 12 years old. The piece highlights how Blake isn't just writing children's stories, but creating sophisticated thrillers for mature audiences, showcasing his exceptional talent and dedication to the craft.
+          </p>
+          <a href="https://www.fox5atlanta.com/news/12-year-old-lagrange-prodigy-writes-sci-fi-thriller-adult-audience" class="article-link" target="_blank" rel="noopener">Read Full Article</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-header">
+            <div class="article-source">LaGrange Daily News</div>
+            <div class="article-date">April 11, 2025</div>
+          </div>
+          <h3 class="article-title">12-year-old LaGrange author publishes first book</h3>
+          <p class="article-excerpt">
+            The local LaGrange Daily News covered Blake's publishing debut, detailing how he completed and published "Eclipsar" in just three months while balancing schoolwork. The article explores his writing process and dedication, noting that aside from school, he focused almost entirely on completing his thriller during those intensive months of creation.
+          </p>
+          <a href="https://www.lagrangenews.com/2025/04/11/12-year-old-lagrange-author-publishes-first-book/" class="article-link" target="_blank" rel="noopener">Read Full Article</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-header">
+            <div class="article-source">Times-Georgian</div>
+            <div class="article-date">2025</div>
+          </div>
+          <h3 class="article-title">Folks in the Making: Young author releases first book</h3>
+          <p class="article-excerpt">
+            The Times-Georgian featured Blake in their "Folks in the Making" series, exploring how his high-functioning autism helps fuel his creative writing process. The article discusses how Blake uses hyperfixation episodes to generate story ideas and his ambitious goal to start a nonprofit foundation helping neurodivergent people launch their businesses. It also previews his upcoming books "Nightmare on the Run" and "Crimson Roulette."
+          </p>
+          <a href="https://www.times-georgian.com/news/local/folks-in-the-making-young-author-releases-first-book/article_561195e3-f41c-5e63-a59f-0365c8a6632c.html" class="article-link" target="_blank" rel="noopener">Read Full Article</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-header">
+            <div class="article-source">WRBL News (Columbus)</div>
+            <div class="article-date">June 27, 2025</div>
+          </div>
+          <h3 class="article-title">Midday Interview: Prodigy author writes thrillers for adult audiences</h3>
+          <p class="article-excerpt">
+            Blake appeared on WRBL's midday show to discuss his book "Eclipsar," described as "a dark tale of memory loss, survival and the monsters hidden in isolation." The interview also covered Blake's life experiences and his inspiring message that "Your condition is a capability not a disability," showing his mature perspective on overcoming challenges.
+          </p>
+          <a href="https://www.yahoo.com/entertainment/articles/midday-interview-prodigy-author-writes-191252506.html" class="article-link" target="_blank" rel="noopener">Read Full Article</a>
+        </article>
+
+      </div>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Blake Varnadoe. All rights reserved.</p>
+    <div class="container">
+      <p>&copy; 2025 Blake Varnadoe. All rights reserved.</p>
+    </div>
   </footer>
 </body>
 </html>
