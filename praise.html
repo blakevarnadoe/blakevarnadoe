@@ -4,75 +4,458 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Praise – Blake Varnadoe</title>
+  <meta name="description" content="What readers and critics are saying about Blake Varnadoe's work.">
   <link rel="icon" href="favicon.ico" />
   <style>
-    body {
-      background-color: #0b0c10;
-      color: #fff;
-      font-family: "Segoe UI", sans-serif;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    header, footer {
+    
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #0b0c10;
+      color: #ffffff;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    header {
       background-color: #111;
-      color: #ccc;
-      padding: 1.5em 0;
-      text-align: center;
+      padding: 1em 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
     }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo a {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+    
+    .logo a:hover {
+      color: #e50914;
+    }
+    
     nav ul {
       list-style: none;
-      padding: 0;
       display: flex;
-      justify-content: center;
       gap: 1.5em;
     }
+    
     nav a {
       color: #bbb;
-      text-decoration: none;
       font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
     }
-    nav a:hover {
+    
+    nav a:hover,
+    nav a.active {
       color: #fff;
     }
-    main {
-      padding: 4em 2em;
+    
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #e50914, #ff6b6b);
+    }
+    
+    .hero-section {
+      padding: 6em 1em 4em;
+      text-align: center;
+      background: linear-gradient(135deg, #0b0c10 0%, #1a1a2e 50%, #16213e 100%);
+      position: relative;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(229, 9, 20, 0.1) 0%, transparent 70%);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .page-title {
+      font-size: 3.5rem;
+      margin-bottom: 0.5em;
+      background: linear-gradient(135deg, #e50914, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .page-subtitle {
+      font-size: 1.3rem;
+      color: #ccc;
+      max-width: 600px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .content-section {
+      padding: 4em 1em;
       text-align: center;
     }
-    h2 {
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2em;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .testimonial-card {
+      background: linear-gradient(145deg, #111, #1a1a1a);
+      border-radius: 15px;
+      padding: 2.5em;
+      position: relative;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(229, 9, 20, 0.1);
+      overflow: hidden;
+    }
+    
+    .testimonial-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #e50914, #ff6b6b);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    
+    .testimonial-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(229, 9, 20, 0.2);
+      border-color: rgba(229, 9, 20, 0.3);
+    }
+    
+    .quote-icon {
+      font-size: 3rem;
       color: #e50914;
-      font-size: 2.5rem;
+      opacity: 0.3;
       margin-bottom: 1em;
     }
-    p {
-      color: #ccc;
+    
+    .testimonial-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2em;
+      color: #e0e0e0;
+      font-style: italic;
+      position: relative;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+    
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e50914, #ff6b6b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
       font-size: 1.2rem;
+    }
+    
+    .author-info h4 {
+      color: #fff;
+      margin-bottom: 0.2em;
+    }
+    
+    .author-info p {
+      color: #888;
+      font-size: 0.9rem;
+    }
+    
+    .featured-review {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      border-radius: 20px;
+      padding: 4em;
+      margin: 4em auto;
+      max-width: 800px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .featured-review::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(229, 9, 20, 0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .featured-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .featured-review .quote-icon {
+      font-size: 4rem;
+      margin-bottom: 1em;
+    }
+    
+    .featured-review .testimonial-text {
+      font-size: 1.4rem;
+      margin-bottom: 2em;
+      color: #fff;
+    }
+    
+    .featured-review .author-info h4 {
+      font-size: 1.3rem;
+      color: #e50914;
+    }
+    
+    .placeholder-message {
+      background: linear-gradient(145deg, #111, #1a1a1a);
+      border-radius: 15px;
+      padding: 3em;
+      text-align: center;
+      border: 2px dashed rgba(229, 9, 20, 0.3);
+      margin: 2em 0;
+    }
+    
+    .placeholder-message h3 {
+      color: #e50914;
+      margin-bottom: 1em;
+      font-size: 1.5rem;
+    }
+    
+    .placeholder-message p {
+      color: #ccc;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    footer {
+      background-color: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 2em 0;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.5rem;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 0.8em;
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        padding: 3em 1em;
+      }
+      
+      .featured-review {
+        padding: 2em;
+        margin: 2em auto;
+      }
+      
+      .featured-review .testimonial-text {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Blake Varnadoe</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="books.html">Books</a></li>
-        <li><a href="newsletter.html">Newsletter</a></li>
-        <li><a href="articles.html" class="active">Articles</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="praise.html">Praise</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container nav-container">
+      <h1 class="logo"><a href="index.html">Blake Varnadoe</a></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="newsletter.html">Newsletter</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="praise.html" class="active">Praise</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h2>Praise</h2>
-    <p>This page is still being developed. Check back soon!</p>
-  </main>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h2 class="page-title">Praise & Reviews</h2>
+      <p class="page-subtitle">What readers and critics are saying about Blake Varnadoe's work</p>
+    </div>
+  </section>
+
+  <!-- Featured Review -->
+  <section class="featured-review">
+    <div class="featured-content">
+      <div class="quote-icon">"</div>
+      <p class="testimonial-text">"Better than most adult books that have come across our desk."</p>
+      <div class="author-info">
+        <h4>— Dee Armstrong, WTVM News Leader 9</h4>
+        <p>Television Interview</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reader Testimonials -->
+  <section class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="quote-icon">"</div>
+      <p class="testimonial-text">"Eclipsar absolutely blew me away. From the first page, I was hooked. The idea of a secret bioweapon going rogue isn't new, but Blake Varnadoe takes it to a whole new level. The pacing is intense, the atmosphere is genuinely creepy, and the main character, Andy, feels incredibly real... If you're into fast-paced thrillers with a sci-fi twist and just enough emotional depth to keep you invested, this is 100% worth your time. I honestly couldn't stop reading. Highly recommend!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">TD</div>
+        <div class="author-info">
+          <h4>Tatiana Delray</h4>
+          <p>5-Star Goodreads Review</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="quote-icon">"</div>
+      <p class="testimonial-text">"This is a fantastic thriller written by a twelve year old! Super intense. It kept me enthralled for the entire read! I am beyond impressed with this young man's writing skills. Keep up the great work. I look forward to your next book!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">JP</div>
+        <div class="author-info">
+          <h4>Joy Pope</h4>
+          <p>5-Star Amazon Review</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="quote-icon">"</div>
+      <p class="testimonial-text">"Super scary concept, just within the first few pages, I had goosebumps! This new author has raw talent! I definitely recommend this book! I can't wait to read more from him!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">DH</div>
+        <div class="author-info">
+          <h4>Dae Humphreys</h4>
+          <p>5-Star Amazon Review</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="quote-icon">"</div>
+      <p class="testimonial-text">"Very inspiring written by a young man just 12 years young!! Highly recommend"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">P2</div>
+        <div class="author-info">
+          <h4>Peaches2</h4>
+          <p>5-Star Amazon Review</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="stats-section">
+    <div class="container">
+      <h3 style="font-size: 2.5rem; color: #e50914; margin-bottom: 1em;">Recognition & Achievements</h3>
+      <div class="achievement-highlight" style="background: linear-gradient(145deg, #111, #1a1a1a); padding: 3em; border-radius: 20px; margin: 2em auto; max-width: 600px; text-align: center; border: 1px solid rgba(229, 9, 20, 0.2);">
+        <div style="font-size: 3rem; color: #e50914; margin-bottom: 1em;">🏆</div>
+        <h4 style="font-size: 1.8rem; color: #e50914; margin-bottom: 0.5em;">#1 Bestseller</h4>
+        <p style="color: #ccc; font-size: 1.2rem;">Pretty Good Books, LaGrange</p>
+        <p style="color: #888; font-size: 1rem; margin-top: 0.5em;">June 2025 - Most Popular Book</p>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <p>&copy; 2025 Blake Varnadoe. All rights reserved.</p>
+    <div class="container">
+      <p>&copy; 2025 Blake Varnadoe. All rights reserved.</p>
+    </div>
   </footer>
+
+  <script>
+    // Add scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.testimonial-card, .placeholder-message').forEach(element => {
+      observer.observe(element);
+    });
+  </script>
 </body>
 </html>
