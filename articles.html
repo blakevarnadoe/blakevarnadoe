@@ -62,142 +62,101 @@
       color: #fff;
     }
 
-    /* Featured Article Section */
-    .featured-section {
-      margin: 4em 0 5em;
-      position: relative;
-      overflow: hidden;
-    }
 
-    .featured-article {
-      background: linear-gradient(135deg, 
-        #ff0000, #ff8000, #ffff00, #80ff00, 
-        #00ff00, #00ff80, #00ffff, #0080ff, 
-        #0000ff, #8000ff, #ff00ff, #ff0080);
-      background-size: 400% 400%;
-      animation: rainbowGradient 8s ease infinite;
-      padding: 3px;
-      border-radius: 20px;
+
+    .unreliable-article {
+      border-left: 4px solid #ff6b35 !important;
+    }
+    
+    .unreliable-article .article-source {
+      color: #ff6b35 !important;
+    }
+    
+    .unreliable-overlay {
+      background-color: #ff6b35;
+      color: white;
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 0.3em;
+    }
+    
+    .original-date {
+      color: #888;
+      font-size: 0.9rem;
+    }
+    
+    .unreliable-link {
+      background-color: #ff6b35 !important;
+    }
+    
+    .unreliable-link:hover {
+      background-color: #e55a2b !important;
+    }
+    
+    .unreliable-warning {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+      z-index: 10;
+    }
+    
+    .warning-icon {
+      background-color: #ff6b35;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
       position: relative;
+    }
+    
+    .warning-dropdown {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      background-color: #222;
+      border: 1px solid #ff6b35;
+      border-radius: 8px;
+      padding: 1em;
+      width: 300px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #ccc;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
       transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-
-    .featured-article:hover {
-      transform: scale(1.02);
-      box-shadow: 0 20px 60px rgba(255, 255, 255, 0.2);
-    }
-
-    .featured-article::before {
+    
+    .warning-dropdown::before {
       content: '';
       position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      border-radius: 20px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
+      top: -8px;
+      right: 12px;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid #ff6b35;
     }
-
-    .featured-article:hover::before {
+    
+    .unreliable-warning:hover .warning-dropdown {
       opacity: 1;
-      animation: shimmer 1.5s ease-in-out infinite;
+      visibility: visible;
+      transform: translateY(0);
     }
-
-    @keyframes shimmer {
-      0% { transform: translateX(-100%) rotate(45deg); }
-      100% { transform: translateX(200%) rotate(45deg); }
-    }
-
-    @keyframes rainbowGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .featured-content {
-      background-color: #111;
-      border-radius: 17px;
-      padding: 3em;
-      position: relative;
-      z-index: 1;
-    }
-
-    .featured-badge {
-      background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
-      background-size: 300% 300%;
-      animation: rainbowGradient 6s ease infinite;
-      color: #000;
-      padding: 0.5em 1.5em;
-      border-radius: 25px;
-      font-weight: bold;
-      font-size: 0.9rem;
-      display: inline-block;
-      margin-bottom: 1.5em;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .featured-header {
-      text-align: center;
-      margin-bottom: 2em;
-    }
-
-    .featured-subtitle {
-      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 1em;
-    }
-
-    .featured-title {
-      font-size: 2.2rem;
-      margin-bottom: 0.5em;
-      color: #fff;
-    }
-
-    .featured-source {
-      font-size: 1.4rem;
-      color: #ff6b6b;
-      font-weight: bold;
-    }
-
-    .featured-excerpt {
-      font-size: 1.1rem;
-      color: #ddd;
-      line-height: 1.8;
-      margin: 1.5em 0;
-    }
-
-    .featured-link {
-      display: inline-flex;
-      align-items: center;
-      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-      color: #fff;
-      padding: 1em 2em;
-      border-radius: 50px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-    }
-
-    .featured-link:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
-    }
-
-    .featured-link::after {
-      content: " →";
-      margin-left: 0.5em;
-      font-size: 1.2em;
-    }
-
+    
     /* Main Content */
     main {
       padding: 4em 1em;
@@ -259,6 +218,7 @@
       padding: 2em;
       transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
       border-left: 4px solid #e50914;
+      position: relative;
     }
 
     .article-card.hidden {
@@ -382,25 +342,7 @@
     </div>
   </header>
 
-  <!-- Featured Article Section -->
-  <section class="featured-section">
-    <div class="container">
-      <div class="featured-article">
-        <div class="featured-content">
-          <div class="featured-badge">🌟 INTERNATIONAL FEATURE</div>
-          <div class="featured-header">
-            <p class="featured-subtitle">This is the largest Telugu newspaper in the country of India.</p>
-            <h2 class="featured-title">Blake Varnadoe: అదే నా బలం..!</h2>
-            <div class="featured-source">Eenadu</div>
-          </div>
-          <p class="featured-excerpt">
-            Blake was featured in Eenadu, India's largest Telugu newspaper, highlighting his remarkable achievement as a 13-year-old author who wrote the horror thriller novel "Eclipsar." The article covers his writing journey, his perspective on autism as a capability rather than a disability, his family's support system, and his current work on "Nightmare in the Run" while pursuing interests in guitar, mandolin, and coding.
-          </p>
-          <a href="https://www.eenadu.net/telugu-article/kids-stories/talented-kid--blake-varnadoe/0203/125160029" class="featured-link" target="_blank" rel="noopener">Read International Feature</a>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <main>
     <div class="container">
@@ -417,6 +359,28 @@
       
       <div class="articles-grid">
         
+        <article class="article-card unreliable-article" data-category="print">
+          <div class="unreliable-warning">
+            <div class="warning-icon">!</div>
+            <div class="warning-dropdown">
+              <div class="warning-title">UNRELIABLE ARTICLE</div>
+              <p>This article was written in a newspaper originating from a different language. The editors/journalists that wrote this article <em>did not</em> reach out to Blake prior or during the writing of the article, therefore, most of the information featured is false and/or misleading.</p>
+            </div>
+          </div>
+          <div class="article-header">
+            <div class="article-source">Eenadu (India)</div>
+            <div class="article-date">
+              <span class="unreliable-overlay">UNRELIABLE INFORMATION</span>
+              <span class="original-date">Published 2025</span>
+            </div>
+          </div>
+          <h3 class="article-title">Blake Varnadoe: అదే నా బలం..!</h3>
+          <p class="article-excerpt">
+            Blake was featured in Eenadu, India's largest Telugu newspaper. However, this article contains inaccuracies as the publication did not contact Blake or his representatives for verification of information before publishing.
+          </p>
+          <a href="https://www.eenadu.net/telugu-article/kids-stories/talented-kid--blake-varnadoe/0203/125160029" class="article-link unreliable-link" target="_blank" rel="noopener">Read Article</a>
+        </article>
+
         <article class="article-card" data-category="video print">
           <div class="article-header">
             <div class="article-source">FOX 5 Atlanta</div>
