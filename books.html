@@ -81,6 +81,7 @@
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
       transition: background 0.3s ease;
+      scroll-margin-top: 100px;
     }
 
     .book:hover {
@@ -98,6 +99,66 @@
       color: #ccc;
     }
 
+    .delayed-badge {
+      display: inline-block;
+      background-color: #e50914;
+      color: #fff;
+      padding: 0.3em 0.8em;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: help;
+      position: relative;
+      margin-left: 0.5em;
+    }
+
+    .delayed-badge .tooltip {
+      visibility: hidden;
+      width: 320px;
+      background-color: #222;
+      color: #fff;
+      text-align: left;
+      border-radius: 6px;
+      padding: 1em;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -160px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      font-size: 0.9rem;
+      font-weight: normal;
+      line-height: 1.5;
+    }
+
+    .delayed-badge .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #222 transparent transparent transparent;
+    }
+
+    .delayed-badge:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .tooltip a {
+      color: #e50914;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .tooltip a:hover {
+      color: #ff1a24;
+    }
+
     footer {
       background-color: #111;
       color: #ccc;
@@ -109,6 +170,10 @@
     @media (max-width: 600px) {
       .book h3 {
         font-size: 1.2rem;
+      }
+      .delayed-badge .tooltip {
+        width: 260px;
+        margin-left: -130px;
       }
     }
   </style>
@@ -142,20 +207,28 @@
         <!-- Eclipsar -->
 <div class="book">
   <h3>Eclipsar</h3>
-  <p>Blake Varnadoe’s chilling sci-fi/horror debut. A dark, cerebral tale of survival, gruesome deaths, and hopeless monsters. Published April 5, 2025.</p>
+  <p>Blake Varnadoe's chilling sci-fi/horror debut. A dark, cerebral tale of survival, gruesome deaths, and hopeless monsters. Published April 5, 2025.</p>
   <p><a href="https://amzn.to/4cu9jSS" target="_blank" style="color: #e50914; font-weight: bold;">Purchase on Amazon</a></p>
 </div>
 
-          <!-- Nightmare on the Run -->
-          <div class="book">
-            <h3>Nightmare on the Run</h3>
-            <p>A relentless psychological thriller that dives deep into fear, family, and survival. Releasing October 27, 2025.</p>
+          <!-- Unknown Title -->
+          <div class="book" id="unknown-title">
+            <h3>Unknown Title</h3>
+            <p>A book based in LaGrange, Georgia. Releasing late 2025 or early 2026.</p>
           </div>
 
-          <!-- Crimson Roulette -->
+          <!-- Nightmare on the Run -->
           <div class="book">
-            <h3>Crimson Roulette (Coming Soon)</h3>
-            <p>In a game where lives are gambled instead of money, one father’s past returns to haunt his future. Coming early 2026.</p>
+            <h3>
+              Nightmare on the Run
+              <span class="delayed-badge">
+                DELAYED
+                <span class="tooltip">
+                  This book has been delayed to 2026 or later due to a false Instagram ban that shut down all of Blake's social media. Another book will release this year or early next year in its place, titled <a onclick="document.getElementById('unknown-title').scrollIntoView({behavior: 'smooth'})">Unknown Title</a>.
+                </span>
+              </span>
+            </h3>
+            <p>A relentless psychological thriller that dives deep into fear, family, and survival.</p>
           </div>
 
         </div>
