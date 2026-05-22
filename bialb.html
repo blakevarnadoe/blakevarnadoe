@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blood Is a Learned Behavior</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink:       #060c18;
+      --deep:      #0a1628;
+      --navy:      #0d2147;
+      --mid:       #1a3a6e;
+      --steel:     #2e5fa3;
+      --sky:       #4d8ed4;
+      --frost:     #aac8ef;
+      --white:     #f0f5ff;
+      --dim:       rgba(240,245,255,0.55);
+      --rule:      rgba(77,142,212,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--ink);
+      color: var(--white);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.45;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; z-index: 1;
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Left: teaser image */
+    .hero-image-col {
+      position: relative;
+      height: 100svh;
+      overflow: hidden;
+    }
+
+    .hero-image-col img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: saturate(0.7) brightness(0.85);
+      transition: filter 1.2s ease;
+    }
+
+    .hero-image-col:hover img {
+      filter: saturate(1) brightness(0.95);
+    }
+
+    /* Gradient bleed from image into right column */
+    .hero-image-col::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right,
+        transparent 55%,
+        var(--ink) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* Right: text */
+    .hero-text-col {
+      position: relative; z-index: 2;
+      padding: 6rem 5rem 6rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sky);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .title {
+      font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      opacity: 0;
+      animation: fadeUp 0.9s 0.45s forwards;
+    }
+
+    .title em {
+      font-style: italic;
+      color: var(--frost);
+    }
+
+    .rule {
+      width: 3rem;
+      height: 1px;
+      background: var(--sky);
+      opacity: 0;
+      animation: fadeUp 0.7s 0.65s forwards;
+    }
+
+    .synopsis {
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--dim);
+      max-width: 38ch;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.85s forwards;
+    }
+
+    .date-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      color: var(--sky);
+      opacity: 0;
+      animation: fadeUp 0.8s 1.05s forwards;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.75rem 2rem;
+      border: 1px solid var(--steel);
+      color: var(--frost);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      width: fit-content;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.25s forwards;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--steel);
+      transform: translateX(-100%);
+      transition: transform 0.35s ease;
+      z-index: -1;
+    }
+
+    .cta:hover { color: var(--white); }
+    .cta:hover::before { transform: translateX(0); }
+
+    /* ─── DETAILS STRIP ─── */
+    .strip {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      background: rgba(13,33,71,0.4);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .strip-item {
+      flex: 1;
+      max-width: 240px;
+      padding: 2rem 2.5rem;
+      border-right: 1px solid var(--rule);
+      text-align: center;
+    }
+
+    .strip-item:last-child { border-right: none; }
+
+    .strip-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 0.5rem;
+    }
+
+    .strip-value {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── QUOTE SECTION ─── */
+    .quote-section {
+      position: relative; z-index: 1;
+      padding: 8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+      overflow: hidden;
+    }
+
+    /* faint concentric rings behind quote */
+    .quote-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(77,142,212,0.07);
+      box-shadow:
+        0 0 0 80px rgba(77,142,212,0.04),
+        0 0 0 160px rgba(77,142,212,0.03),
+        0 0 0 240px rgba(77,142,212,0.02);
+      pointer-events: none;
+    }
+
+    blockquote {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.55;
+      color: var(--frost);
+      max-width: 22ch;
+      position: relative;
+    }
+
+    blockquote::before {
+      content: '\201C';
+      position: absolute;
+      top: -1.2rem; left: -1.5rem;
+      font-size: 5rem;
+      color: var(--steel);
+      opacity: 0.3;
+      line-height: 1;
+    }
+
+    .quote-attr {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sky);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--rule);
+      padding: 2.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--dim);
+    }
+
+    .footer-mono {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(77,142,212,0.5);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-image-col {
+        height: 60svh;
+      }
+
+      .hero-image-col::after {
+        background: linear-gradient(to bottom,
+          transparent 55%,
+          var(--ink) 100%
+        );
+      }
+
+      .hero-text-col {
+        padding: 3rem 2rem 4rem;
+      }
+
+      .strip { flex-wrap: wrap; }
+      .strip-item { min-width: 140px; }
+
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-image-col">
+      <img src="1000004862.png" alt="Blood Is a Learned Behavior — teaser art" />
+    </div>
+
+    <div class="hero-text-col">
+      <p class="eyebrow">A Novel by Blake</p>
+      <h1 class="title">
+        Blood Is a<br />
+        <em>Learned Behavior</em>
+      </h1>
+      <div class="rule"></div>
+      <p class="synopsis">
+        Two brothers. One city. A reunion that was never meant to be safe.
+        <br /><br />
+        Set in LaGrange, Georgia, <em>Blood Is a Learned Behavior</em> is a
+        psychological thriller about control, manipulation, and what happens
+        when the person doing the hunting doesn't realize they're already
+        the prey.
+      </p>
+      <p class="date-tag">Coming 08.??.26</p>
+      <a class="cta" href="https://www.facebook.com/share/1DxVFGtnkQ/" target="_blank" rel="noopener noreferrer">Stay Informed</a>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="strip-item">
+      <p class="strip-label">Genre</p>
+      <p class="strip-value">Psychological Thriller</p>
+    </div>
+    <div class="strip-item">
+      <p class="strip-label">Setting</p>
+      <p class="strip-value">LaGrange, Georgia</p>
+    </div>
+    <div class="strip-item">
+      <p class="strip-label">Release</p>
+      <p class="strip-value">08.??.2026</p>
+    </div>
+    <div class="strip-item">
+      <p class="strip-label">Volume</p>
+      <p class="strip-value">Book One</p>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <blockquote>
+      Some things are taught, some things are inherited. But some things are simply inevitable.
+    </blockquote>
+    <p class="quote-attr">Blood Is a Learned Behavior</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-brand">Blood Is a Learned Behavior &nbsp;—&nbsp; A Novel</p>
+    <p class="footer-mono">© 2026 Blake Varnadoe. &nbsp;·&nbsp; All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>
